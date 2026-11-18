@@ -18,17 +18,22 @@ class AppConstants {
   static const String cartTitle = '--- Your Cart ---';
   static const String emptyCartMessage = '(Your cart is currently empty)';
   static const String cartSeparator = '-----------------';
-  static const String enterProductIdPrompt = 'Enter the Product ID you want to add: ';
+  static const String enterProductIdPrompt =
+      'Enter the Product ID you want to add: ';
 
   // ===== Success & Error Messages =====
-  static const String addToCartSuccess = '--> [Success] Added {0} to your cart.';
-  static const String invalidProductIdError = '--> [Error] Invalid Product ID. Please try again.';
-  static const String invalidMenuChoiceError = '--> [Error] Invalid choice. Please enter a number between 1 and 5.';
+  static const String addToCartSuccess =
+      '--> [Success] Added {0} to your cart.';
+  static const String invalidProductIdError =
+      '--> [Error] Invalid Product ID. Please try again.';
+  static const String invalidMenuChoiceError =
+      '--> [Error] Invalid choice. Please enter a number between 1 and 5.';
   static const String sessionCancelledMessage = '\nSession cancelled. Goodbye!';
 
   // ===== Checkout Messages =====
   static const String checkoutTitle = '--- Final Checkout ---';
-  static const String emptyCheckoutMessage = 'Your cart is empty. Nothing to charge.';
+  static const String emptyCheckoutMessage =
+      'Your cart is empty. Nothing to charge.';
   static const String subtotalLabel = 'Subtotal: \$';
   static const String discountLabel = 'Discount ({0}%): -\$';
   static const String finalTotalLabel = 'Final Total: \$';

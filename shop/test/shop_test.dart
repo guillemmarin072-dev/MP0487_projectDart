@@ -5,7 +5,11 @@ import 'package:test/test.dart';
 void main() {
   group('Core Functions Tests', () {
     test('#1. Product should be created with correct properties', () {
-      final product = Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice);
+      final product = Product(
+        AppConstants.defaultLaptopId,
+        AppConstants.defaultLaptopName,
+        AppConstants.defaultLaptopPrice,
+      );
       expect(product.id, AppConstants.defaultLaptopId);
       expect(product.name, AppConstants.defaultLaptopName);
       expect(product.price, AppConstants.defaultLaptopPrice);
@@ -13,11 +17,26 @@ void main() {
 
     test('#2. calculateSubtotal should sum all cart items', () {
       final cart = [
-        Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice),
-        Product(AppConstants.defaultSmartphoneId, AppConstants.defaultSmartphoneName, AppConstants.defaultSmartphonePrice),
-        Product(AppConstants.defaultHeadphonesId, AppConstants.defaultHeadphonesName, AppConstants.defaultHeadphonesPrice),
+        Product(
+          AppConstants.defaultLaptopId,
+          AppConstants.defaultLaptopName,
+          AppConstants.defaultLaptopPrice,
+        ),
+        Product(
+          AppConstants.defaultSmartphoneId,
+          AppConstants.defaultSmartphoneName,
+          AppConstants.defaultSmartphonePrice,
+        ),
+        Product(
+          AppConstants.defaultHeadphonesId,
+          AppConstants.defaultHeadphonesName,
+          AppConstants.defaultHeadphonesPrice,
+        ),
       ];
-      final expected = AppConstants.defaultLaptopPrice + AppConstants.defaultSmartphonePrice + AppConstants.defaultHeadphonesPrice;
+      final expected =
+          AppConstants.defaultLaptopPrice +
+          AppConstants.defaultSmartphonePrice +
+          AppConstants.defaultHeadphonesPrice;
       expect(calculateSubtotal(cart), closeTo(expected, 0.01));
     });
 
@@ -42,31 +61,60 @@ void main() {
 
     test('#6. findProductById should locate products correctly', () {
       final catalog = [
-        Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice),
-        Product(AppConstants.defaultSmartphoneId, AppConstants.defaultSmartphoneName, AppConstants.defaultSmartphonePrice),
-        Product(AppConstants.defaultHeadphonesId, AppConstants.defaultHeadphonesName, AppConstants.defaultHeadphonesPrice),
+        Product(
+          AppConstants.defaultLaptopId,
+          AppConstants.defaultLaptopName,
+          AppConstants.defaultLaptopPrice,
+        ),
+        Product(
+          AppConstants.defaultSmartphoneId,
+          AppConstants.defaultSmartphoneName,
+          AppConstants.defaultSmartphonePrice,
+        ),
+        Product(
+          AppConstants.defaultHeadphonesId,
+          AppConstants.defaultHeadphonesName,
+          AppConstants.defaultHeadphonesPrice,
+        ),
       ];
-      expect(findProductById(catalog, AppConstants.defaultLaptopId)?.name, AppConstants.defaultLaptopName);
-      expect(findProductById(catalog, AppConstants.defaultHeadphonesId)?.name, AppConstants.defaultHeadphonesName);
+      expect(
+        findProductById(catalog, AppConstants.defaultLaptopId)?.name,
+        AppConstants.defaultLaptopName,
+      );
+      expect(
+        findProductById(catalog, AppConstants.defaultHeadphonesId)?.name,
+        AppConstants.defaultHeadphonesName,
+      );
       expect(findProductById(catalog, 5), isNull);
       expect(findProductById(catalog, 0), isNull);
     });
 
-    test('#7. validateProductId should accept valid IDs and reject invalid ones', () {
-      expect(validateProductId('1', 4), 1);
-      expect(validateProductId('4', 4), 4);
-      expect(validateProductId('0', 4), isNull);
-      expect(validateProductId('5', 4), isNull);
-      expect(validateProductId('abc', 4), isNull);
-      expect(validateProductId(null, 4), isNull);
-    });
+    test(
+      '#7. validateProductId should accept valid IDs and reject invalid ones',
+      () {
+        expect(validateProductId('1', 4), 1);
+        expect(validateProductId('4', 4), 4);
+        expect(validateProductId('0', 4), isNull);
+        expect(validateProductId('5', 4), isNull);
+        expect(validateProductId('abc', 4), isNull);
+        expect(validateProductId(null, 4), isNull);
+      },
+    );
   });
 
   group('Integration Tests', () {
     test('#8. should calculate 2-item purchase correctly', () {
       final cart = [
-        Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice),
-        Product(AppConstants.defaultSmartphoneId, AppConstants.defaultSmartphoneName, AppConstants.defaultSmartphonePrice),
+        Product(
+          AppConstants.defaultLaptopId,
+          AppConstants.defaultLaptopName,
+          AppConstants.defaultLaptopPrice,
+        ),
+        Product(
+          AppConstants.defaultSmartphoneId,
+          AppConstants.defaultSmartphoneName,
+          AppConstants.defaultSmartphonePrice,
+        ),
       ];
       final subtotal = calculateSubtotal(cart);
       final discountRate = getDiscountRate(cart.length);
@@ -80,10 +128,26 @@ void main() {
 
     test('#9. should calculate 4-item purchase with 20% discount', () {
       final catalog = [
-        Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice),
-        Product(AppConstants.defaultSmartphoneId, AppConstants.defaultSmartphoneName, AppConstants.defaultSmartphonePrice),
-        Product(AppConstants.defaultHeadphonesId, AppConstants.defaultHeadphonesName, AppConstants.defaultHeadphonesPrice),
-        Product(AppConstants.defaultMouseId, AppConstants.defaultMouseName, AppConstants.defaultMousePrice),
+        Product(
+          AppConstants.defaultLaptopId,
+          AppConstants.defaultLaptopName,
+          AppConstants.defaultLaptopPrice,
+        ),
+        Product(
+          AppConstants.defaultSmartphoneId,
+          AppConstants.defaultSmartphoneName,
+          AppConstants.defaultSmartphonePrice,
+        ),
+        Product(
+          AppConstants.defaultHeadphonesId,
+          AppConstants.defaultHeadphonesName,
+          AppConstants.defaultHeadphonesPrice,
+        ),
+        Product(
+          AppConstants.defaultMouseId,
+          AppConstants.defaultMouseName,
+          AppConstants.defaultMousePrice,
+        ),
       ];
       final subtotal = calculateSubtotal(catalog);
       final discountRate = getDiscountRate(catalog.length);
@@ -97,7 +161,11 @@ void main() {
 
     test('#10. should calculate 1-item purchase with no discount', () {
       final cart = [
-        Product(AppConstants.defaultLaptopId, AppConstants.defaultLaptopName, AppConstants.defaultLaptopPrice),
+        Product(
+          AppConstants.defaultLaptopId,
+          AppConstants.defaultLaptopName,
+          AppConstants.defaultLaptopPrice,
+        ),
       ];
       final subtotal = calculateSubtotal(cart);
       final discountRate = getDiscountRate(cart.length);
