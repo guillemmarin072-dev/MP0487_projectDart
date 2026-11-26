@@ -71,8 +71,8 @@ Product? findProductById(List<Product> catalog, int productId) {
   return null;
 }
 
-/// Validates user input as a valid product ID
-///
+/// Validates user input as a valid product ID It all got fixed with the other ones
+/// fixes
 /// [input] The user input to parse
 /// [catalogLength] The number of products in the catalog
 /// Returns the parsed product ID if valid, null otherwise
